@@ -52,7 +52,7 @@ export default function Slider() {
             style={{ backgroundImage: `url('${slide.image}')` }}
           >
             <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center px-4 shadow-lg">
-              <h2 className="text-white fonts-slider text-5xl italic font-light mb-4">
+              <h2 className="text-white fonts-slider text-3xl lg:text-5xl italic font-light mb-4">
                 {slide.title}
               </h2>
               <p className="text-white text-lg max-w-xl">{slide.description}</p>

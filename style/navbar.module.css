@@ -77,8 +77,8 @@
 }
 @media (width < 600) {
   .logo {
-    width: 5vh;
-    height: 5vh;
+    width: 10vh;
+    height: 10vh;
     top: 15px;
     right: 0.4rem;
   }
