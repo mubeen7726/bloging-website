@@ -112,13 +112,14 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="w-full dark:bg-zinc-700 relative z-50 top-0 min-h-[12vh] lg:min-h-[15vh] bg-teal-50 backdrop-blur-xm">
+    <header className="w-full dark:bg-zinc-700 relative z-50 top-0 min-h-[5vh] lg:min-h-[13vh] bg-teal-50 backdrop-blur-xm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link
+          <div className="flex items-center justify-center">
+         {/* Logo */}
+         <Link
             href="/"
-            className="text-2xl flex items-center justify-center font-bold text-teal-500 hover:text-shadow-teal-600 text-shadow-md transition-all"
+            className=" flex items-center justify-center font-bold text-teal-500 hover:text-shadow-teal-600 text-shadow-md transition-all"
           >
             <Image
               src={"https://res.cloudinary.com/dktdpqfqk/image/upload/v1746537279/Bloging%20website%20seperate%20image/rhtnp9g482vzt6qpnv4y.png"}
@@ -129,6 +130,8 @@ export default function Navbar() {
               alt="logo not found"
             ></Image>
           </Link>
+          </div>
+ 
 
           {/* Desktop Menu */}
           <div className="hidden md:flex md:items-center md:space-x-8">

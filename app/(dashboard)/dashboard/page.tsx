@@ -40,7 +40,7 @@ function Page() {
             View and manage your account information
           </p>
         </div>
-    <div className="flex max-h-30  max-md:my-10 items-start mt-10 mx-10 justify-around dark:bg-zinc-800  h-screen bg-white">
+    <div className="flex max-h-30  max-md:my-10 items-start mt-10 mx-3 lg:mx-10 justify-around dark:bg-zinc-800  h-screen bg-white">
    
       <div className="bg-gradient-to-b px-10 dark:shadow-lg dark:shadow-gray-600 md:px-20 from-green-500 to-green-300 p-6 rounded-lg shadow-lg text-center ">
         <h1 className="text-2xl font-bold mb-4 text-accent dark:text-white fonts-description">Total Users</h1>

@@ -72,6 +72,14 @@
   .logo{
     width: calc(100% -20px);
     height: calc(100%-20px);
-    position: relative;
-    top: 22px;
+ position: relative;
+ top: 20px;
+ 
   }
+ @media (width <= 600) {
+ .logo{
+  width: 13vh;
+  top: 15px;
+  right: 0.7rem;
+ }
+ }
