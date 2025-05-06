@@ -76,11 +76,11 @@
  top: 20px;
  
   }
- @media (width <= 400) {
+ @media (width <= 500) {
  .logo{
   width: 11vh;
   height: 11vh;
   top: 15px;
-  right: 0.7rem;
+  right: 1rem;
  }
  }
