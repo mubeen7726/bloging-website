@@ -20,7 +20,7 @@ const teamMembers = [
 
     bio: "Sarah started StoryVerse with a vision to create a platform where diverse voices could be heard. With a background in journalism, she curates our featured content.",
 
-    image: "/article2.jpg",
+    image: "https://res.cloudinary.com/dktdpqfqk/image/upload/v1746539473/Bloging%20website%20seperate%20image/mqyjol9on14lbtswyyy3.jpg",
   },
 
   {
@@ -30,7 +30,7 @@ const teamMembers = [
 
     bio: "Michael oversees all technical aspects of our platform, ensuring a seamless experience for both writers and readers.",
 
-    image: "/article3.jpg",
+    image: "https://res.cloudinary.com/dktdpqfqk/image/upload/v1746539479/Bloging%20website%20seperate%20image/nyhbl3d71mravr4wcnet.jpg",
   },
 
   {
@@ -40,7 +40,7 @@ const teamMembers = [
 
     bio: "Elena fosters our growing community, organizing writing challenges and facilitating discussions among our members.",
 
-    image: "/article4.jpg",
+    image: "https://res.cloudinary.com/dktdpqfqk/image/upload/v1746198969/Bloging%20website%20seperate%20image/my7vrbv5zupu7gqzdk9q.jpg",
   },
 ];
 
@@ -216,10 +216,11 @@ export default function AboutPage() {
             viewport={{ once: true }}
           >
             <Image
-              src="/article1.jpg"
+              src="https://res.cloudinary.com/dktdpqfqk/image/upload/v1746539279/Bloging%20website%20seperate%20image/ip4qp1aistlg4u395zpv.jpg"
               alt="Mission visual"
               fill
               className="object-cover"
+              loading="lazy"
             />
           </motion.div>
         </motion.div>
