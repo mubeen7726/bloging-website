@@ -1,86 +1,85 @@
 .link {
-    position: relative;
-    padding-bottom: 4px;
-    color: #0f766e;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 4px;
+  color: #0f766e;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 2px;
+  width: 0;
+  background-color: #14b8a6; /* Teal-500 */
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
+}
+
+.link:hover {
+  color: #0d9488;
+  text-shadow: 0px 2px 3px #a1e8e2;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.mobileLink {
+  display: block;
+  position: relative;
+  padding: 0.5rem 0;
+  color: #e5e7eb; /* text-gray-200 */
+  transition: color 0.3s ease;
+}
+
+.mobileLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #14b8a6;
+  transition: width 0.3s ease;
+}
+
+.mobileLink:hover {
+  color: #5eead4;
+}
+
+.mobileLink:hover::after {
+  width: 100%;
+}
+
+.authPopup {
+  animation: popupEntry 0.6s ease forwards;
+}
+
+@keyframes popupEntry {
+  0% {
+    opacity: 0;
+    transform: translateX(50%) scale(0.8);
   }
-  
-  .link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    height: 2px;
-    width: 0;
-    background-color: #14b8a6; /* Teal-500 */
-    transition: all 0.4s ease;
-    transform: translateX(-50%);
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
-  
-  .link:hover {
-    color: #0d9488;
-    text-shadow: 0px 2px 3px #a1e8e2;
+}
+
+.logo {
+  width: calc(100% -20px);
+  height: calc(100%-20px);
+  position: relative;
+  top: 20px;
+}
+@media (width <= 600) {
+  .logo {
+    width: 11vh;
+    height: 11vh;
+    top: 15px;
+    right: 1rem;
   }
-  
-  .link:hover::after {
-    width: 100%;
-  }
-  
-  .mobileLink {
-    display: block;
-    position: relative;
-    padding: 0.5rem 0;
-    color: #e5e7eb; /* text-gray-200 */
-    transition: color 0.3s ease;
-  }
-  
-  .mobileLink::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    width: 0;
-    background-color: #14b8a6;
-    transition: width 0.3s ease;
-  }
-  
-  .mobileLink:hover {
-    color: #5eead4;
-  }
-  
-  .mobileLink:hover::after {
-    width: 100%;
-  }
-  
-  .authPopup {
-    animation: popupEntry 0.6s ease forwards;
-  }
-  
-  @keyframes popupEntry {
-    0% {
-      opacity: 0;
-      transform: translateX(50%) scale(0.8);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
-  }
-  
-  .logo{
-    width: calc(100% -20px);
-    height: calc(100%-20px);
- position: relative;
- top: 20px;
- 
-  }
- @media (width <= 500) {
- .logo{
-  width: 11vh;
-  height: 11vh;
-  top: 15px;
-  right: 1rem;
- }
- }
+}
