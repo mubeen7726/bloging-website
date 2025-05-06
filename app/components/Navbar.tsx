@@ -126,7 +126,7 @@ export default function Navbar() {
               width={100}
               height={100}
               loading="lazy"
-              className={navbarModule.logo}
+                className={`${navbarModule.logo}`}
               alt="logo not found"
             ></Image>
           </Link>
@@ -139,7 +139,7 @@ export default function Navbar() {
               <Link
                 key={item.title}
                 href={item.href}
-                className={`text-md ${navbarModule.link} relative hover:text-shadow-sm top-[15px] right-[0.4rem] text-shadow-[#a1e8e2]  dark:hover:text-shadow-none max-sm:w-[8vh] max-sm:h-[8vh] font-semibold`}
+                className={`text-md ${navbarModule.link}  hover:text-shadow-sm  text-shadow-[#a1e8e2]  dark:hover:text-shadow-none max-sm:w-[8vh] max-sm:h-[8vh] font-semibold`}
                 >
                 {item.title}
               </Link>
