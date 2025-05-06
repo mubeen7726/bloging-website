@@ -83,3 +83,11 @@
     right: 0.4rem;
   }
 }
+@media (width < 490) {
+  .logo {
+    width: 8vh;
+    height: 9vh;
+    top: 15px;
+    right: 0.6rem;
+  }
+}
