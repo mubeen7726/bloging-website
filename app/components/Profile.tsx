@@ -47,7 +47,7 @@ function Profile({ value }: ProfileProps) {
           Users Joined Per Day
         </CardTitle>
       </CardHeader>
-      <CardContent className="h-[300px]">
+      <CardContent className="px-0 md:px-6 h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />

@@ -76,9 +76,10 @@
  top: 20px;
  
   }
- @media (width <= 600) {
+ @media (width <= 400) {
  .logo{
-  width: 13vh;
+  width: 11vh;
+  height: 11vh;
   top: 15px;
   right: 0.7rem;
  }
