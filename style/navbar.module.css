@@ -20,8 +20,8 @@
 
 .link:hover {
   color: #0d9488;
-  text-shadow: 0px 2px 3px #a1e8e2;
 }
+
 
 .link:hover::after {
   width: 100%;
@@ -75,11 +75,11 @@
   position: relative;
   top: 20px;
 }
-@media (width <= 600) {
+@media (width < 600) {
   .logo {
-    width: 11vh;
-    height: 11vh;
+    width: 5vh;
+    height: 5vh;
     top: 15px;
-    right: 1rem;
+    right: 0.4rem;
   }
 }

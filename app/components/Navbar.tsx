@@ -139,7 +139,7 @@ export default function Navbar() {
               <Link
                 key={item.title}
                 href={item.href}
-                className={`text-md ${navbarModule.link} font-semibold`}
+                className={`text-md ${navbarModule.link} hover:text-shadow-sm text-shadow-[#a1e8e2]  dark:hover:text-shadow-none font-semibold`}
                 >
                 {item.title}
               </Link>

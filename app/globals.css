@@ -169,4 +169,14 @@ input[list].remove-arrow::-webkit-calendar-picker-indicator {
 body {
   overflow-x: hidden;
 }
+.slider-height{
+  height: 30rem;
+}
+@media (width < 500){
+  .slider-height{
+
+  height: 20rem;
+  }
+  
+}
 

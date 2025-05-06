@@ -23,7 +23,7 @@ function Expert() {
 
   return (
     <motion.div
-      className="flex overflow-x-hidden flex-col lg:flex-row justify-between items-stretch w-full h-full rounded-lg shadow-md p-4 gap-4"
+      className="flex overflow-x-hidden overflow-y-hidden  flex-col lg:flex-row justify-between items-stretch w-full h-full rounded-lg shadow-md p-4 gap-4"
       initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}

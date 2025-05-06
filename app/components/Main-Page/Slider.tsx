@@ -1,11 +1,5 @@
 "use client";
-import React from "react";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/pagination";
+import React, { useEffect, useState } from "react";
 
 const slides = [
   {
@@ -32,69 +26,41 @@ const slides = [
 ];
 
 export default function Slider() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="relative">
-      <Swiper
-        loop={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-          renderBullet: (index, className) =>
-            `<span class="${className} custom-bullet"></span>`,
-        }}
-        modules={[Pagination, Autoplay]}
-        className="mySwiper"
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className="h-screen w-screen bg-cover bg-center relative"
-              style={{ backgroundImage: `url('${slide.image}')` }}
-            >
-              <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-4">
-                <h2
-                  className="text-white fonts-slider text-5xl italic font-light mb-4"
-              
-                >
-                  {slide.title}
-                </h2>
-                <p className="text-white  text-lg max-w-xl">
-                  {slide.description}
-                </p>
-              </div>
+    <div className="relative w-screen slider-height overflow-hidden">
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+          }`}
+        >
+          <div
+            className="w-full h-full bg-cover bg-center"
+            style={{ backgroundImage: `url('${slide.image}')` }}
+          >
+            <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center px-4 shadow-lg">
+              <h2 className="text-white fonts-slider text-5xl italic font-light mb-4">
+                {slide.title}
+              </h2>
+              <p className="text-white text-lg max-w-xl">{slide.description}</p>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      {/* Custom Pagination Positioning */}
-      <style jsx global>{`
-        .swiper-pagination {
-          bottom: 40px !important;
-          left: 40px !important;
-          width: auto !important;
-          display: flex;
-          gap: 0px;
-        }
-
-        .custom-bullet {
-          width: 10px;
-          height: 10px;
-          border:2px solid white;
-          border-radius: 9999px;
-          background-color: transparent;
-          transition: all 0.3s ease;
-        }
-
-        .custom-bullet.swiper-pagination-bullet-active {
-          background-color: white;
-
-          transform: scale(1.3);
-        }
-      `}</style>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
+
