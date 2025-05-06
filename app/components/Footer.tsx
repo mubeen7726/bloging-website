@@ -6,7 +6,7 @@ export default function Footer() {
     <div>
       <footer className="bg-[#84a6e8] dark:bg-zinc-700 inset-shadow-accent-foreground shadow-lg relative bottom-0 right-0 left-0 text-[#fcfdff] font-semibold">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {/* Logo and Description */}
             <div>
               <div className="flex-shrink-0">
@@ -53,27 +53,22 @@ export default function Footer() {
 
             {/* Company */}
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">
+              <h3 className="text-sm fonts-date font-semibold uppercase tracking-wider mb-4">
                 Company
               </h3>
               <ul className="space-y-4">
                 <li>
-                  <Link href="#" className="hover:text-custom">
+                  <Link href="/about" className="hover:text-custom">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-custom">
+                  <Link href="/contact" className="hover:text-custom">
                     Contact
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-custom">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-custom">
+                  <Link href="/privacy-policy" className="hover:text-custom">
                     Privacy Policy
                   </Link>
                 </li>
@@ -81,32 +76,14 @@ export default function Footer() {
             </div>
 
             {/* Connect */}
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">
-                Connect
-              </h3>
-              <div className="flex space-x-6">
-                <Link href="#" className="hover:text-custom">
-                  <i className="fab fa-facebook-f" />
-                </Link>
-                <Link href="#" className="hover:text-custom">
-                  <i className="fab fa-twitter" />
-                </Link>
-                <Link href="#" className="hover:text-custom">
-                  <i className="fab fa-instagram" />
-                </Link>
-                <Link href="#" className="hover:text-custom">
-                  <i className="fab fa-youtube" />
-                </Link>
-              </div>
-            </div>
+       
           </div>
 
           {/* Footer Bottom */}
           <div className="mt-8 pt-8 border-t border-gray-200">
             <div className="flex justify-between items-center">
-              <p className="text-center">
-                © 2024 TechReviews Hub. All rights reserved.
+              <p className="text-center fonts-date">
+                © 2024 Social Hub. All rights reserved.
               </p>
             </div>
           </div>

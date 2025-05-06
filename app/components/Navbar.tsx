@@ -19,6 +19,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import navbarModule from '@/style/navbar.module.css'
 
 // Extend NextAuth types
 declare module "next-auth" {
@@ -124,7 +125,7 @@ export default function Navbar() {
               width={100}
               height={100}
               loading="lazy"
-              className="w-25 h-25 relative top-8"
+              className={navbarModule.logo}
               alt="logo not found"
             ></Image>
           </Link>
@@ -135,8 +136,8 @@ export default function Navbar() {
               <Link
                 key={item.title}
                 href={item.href}
-                className="text-md fonts-date font-semibold text-teal-600 hover:text-teal-400 transition-all hover:scale-110"
-              >
+                className={`text-md ${navbarModule.link} font-semibold`}
+                >
                 {item.title}
               </Link>
             ))}
@@ -233,7 +234,8 @@ export default function Navbar() {
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="block text-gray-200 hover:text-teal-400"
+                  className={`${navbarModule.mobileLink}`}
+
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.title}
@@ -241,7 +243,7 @@ export default function Navbar() {
               ))}
 
               {/* Theme Toggle */}
-              <div className="flex justify-end">
+              <div className="flex justify-start">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" size="icon">
