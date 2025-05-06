@@ -41,7 +41,7 @@ function Profile({ value }: ProfileProps) {
     .sort((a, b) => a.date.localeCompare(b.date));
 
   return (
-    <Card className="w-full p-4 my-40 pb-40 shadow-md rounded-2xl bg-white dark:bg-gray-950">
+    <Card className="w-full p-2  md:p-4 my-40 pb-40 shadow-md rounded-2xl bg-white dark:bg-gray-950">
       <CardHeader className="pb-2">
         <CardTitle className="text-xl fonts-date font-semibold text-primary">
           Users Joined Per Day
