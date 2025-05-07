@@ -8,6 +8,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -46,6 +47,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
+
 
 :root {
   --radius: 0.625rem;
@@ -165,6 +167,7 @@ input[list].remove-arrow::-webkit-calendar-picker-indicator {
   font-weight: 400;
   font-style: normal;
 }
+
 
 body {
   overflow-x: hidden;

@@ -100,10 +100,10 @@ export default function Page() {
   return (
     <div className="max-w-4xl mx-auto p-4 md:p-6">
       <div className="mb-8 text-center">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
+        <h1 className="text-2xl md:text-3xl dark:text-colors dark:text-[#FFFCF9] font-bold text-gray-800">
           User Profiles
         </h1>
-        <p className="text-gray-500 mt-2">Manage all registered users</p>
+        <p className="text-gray-500 dark:text-white mt-2">Manage all registered users</p>
       </div>
 
       <div className="flex justify-between items-center my-5">
@@ -186,7 +186,7 @@ export default function Page() {
         {paginatedUsers().map((profile) => (
           <div
             key={profile._id}
-            className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+            className="bg-white dark:bg-[#1B2432] p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
           >
             <div className="flex items-center mb-4">
               <div className="bg-blue-100 rounded-full mr-4">
@@ -199,7 +199,7 @@ export default function Page() {
                 />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800">
+                <h3 className="font-semibold dark:text-[#FFFCF9]  text-gray-800">
                   {profile.Username}
                 </h3>
                 <p className="text-sm text-gray-500">{profile.email}</p>
@@ -208,8 +208,8 @@ export default function Page() {
 
             <div className="space-y-2 text-sm mb-6">
               <div className="flex justify-between">
-                <span className="text-gray-500">User ID:</span>
-                <span className="font-mono text-xs text-gray-700 truncate max-w-[120px]">
+                <span className="text-gray-500 dark:text-[#F2E8CF]">User ID:</span>
+                <span className="font-mono text-xs dark:text-[#F2E8CF] text-gray-700 truncate max-w-[120px]">
                   {profile._id}
                 </span>
               </div>
