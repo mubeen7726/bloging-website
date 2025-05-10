@@ -22,7 +22,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 
-// ✅ Types
 interface Article {
   _id: string;
   title: string;
@@ -148,14 +147,13 @@ export default function BlogPage() {
         const query = searchQuery.toLowerCase();
         const matchesSearch =
           article.title.toLowerCase().includes(query) ||
-          article.UserName.toLowerCase().includes(query); 
+          article.UserName.toLowerCase().includes(query);
         const matchesCategory =
           !selectedCategory || article.category === selectedCategory;
         return matchesSearch && matchesCategory;
       }),
     [articles, searchQuery, selectedCategory]
   );
-  
 
   const loadMoreArticles = () => {
     const nextVisibleCount = visibleArticles + 5;
@@ -183,10 +181,10 @@ export default function BlogPage() {
         <link rel="canonical" href="https://yourdomain.com/blog" />
       </Head>
 
-      <main className="mt-10 p-6 md:p-10 dark:bg-zinc-800 bg-white min-h-screen">
+      <main className="mt-4 md:mt-10 p-4 md:p-10 dark:bg-zinc-900 bg-white min-h-screen">
         <section
           aria-labelledby="search-heading"
-          className="mb-10 max-w-2xl mx-auto"
+          className="mb-6 md:mb-10 w-full max-w-2xl mx-auto"
         >
           <h2 id="search-heading" className="sr-only">
             Article Search
@@ -196,29 +194,28 @@ export default function BlogPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="🔍 Search articles..."
-            className="w-full px-5 py-3 text-base border dark:placeholder:text-white dark:bg-gray-500 border-blue-300 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-white"
+            className="w-full px-4 py-2 md:px-5 md:py-3 text-sm md:text-base border dark:placeholder:text-gray-300 dark:bg-zinc-800 dark:border-zinc-600 border-blue-300 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 bg-white"
             aria-label="Search articles by title"
             aria-controls="articles-list"
           />
         </section>
 
-        <div className="md:flex items-center justify-end hidden mb-4 mr-3">
-          <strong className="text-xl dark:text-white text-gray-800 mr-2 mb-[3px]">
-            Total articles:
-          </strong>
-          <h1 className="text-md text-gray-900 font-bold dark:text-white">
-            {filteredArticles.length}
-          </h1>
-        </div>
-
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
-          <h1 className="text-4xl font-bold dark:text-white text-slate-800 tracking-tight">
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-2xl md:text-4xl font-bold dark:text-white text-slate-800 tracking-tight">
             {pageTitle}
           </h1>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <span className="text-sm md:text-base dark:text-gray-300 font-medium">
+              {filteredArticles.length} articles
+            </span>
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+          <div className="w-full sm:w-auto flex items-center gap-3">
             <label
               htmlFor="category"
-              className="text-sm dark:text-white font-medium text-gray-700"
+              className="text-sm dark:text-gray-300 font-medium text-gray-700 whitespace-nowrap"
             >
               Filter by:
             </label>
@@ -226,7 +223,7 @@ export default function BlogPage() {
               id="category"
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2 rounded-lg border dark:bg-zinc-700 dark:text-white border-blue-300 shadow-sm bg-white text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
+              className="w-full px-3 py-2 md:px-4 md:py-2 rounded-lg border dark:bg-zinc-800 dark:text-gray-300 dark:border-zinc-600 border-blue-300 shadow-sm bg-white text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
               aria-label="Filter articles by category"
             >
               {categories.map((category) => (
@@ -238,24 +235,16 @@ export default function BlogPage() {
                 </option>
               ))}
             </select>
-            <div className="flex md:hidden items-center justify-end">
-              <strong className="text-sm dark:text-white text-gray-800">
-                Total articles:{" "}
-              </strong>
-              <h1 className="text-md dark:text-white text-gray-900">
-                {filteredArticles.length}
-              </h1>
-            </div>
           </div>
         </div>
 
-        <section aria-labelledby="articles-heading">
-          <h2 id="articles-heading" className="py-10 sr-only">
+        <section aria-labelledby="articles-heading" className="mb-8">
+          <h2 id="articles-heading" className="sr-only">
             Articles List
           </h2>
           <div
             id="articles-list"
-            className="flex flex-col"
+            className="grid gap-4 md:gap-6"
             role="list"
             aria-live="polite"
           >
@@ -263,109 +252,143 @@ export default function BlogPage() {
               filteredArticles.slice(0, visibleArticles).map((article) => (
                 <article
                   key={`article-${article._id}`}
-                  className="bg-white dark:bg-zinc-700 flex my-1 rounded-xl border border-gray-200 p-2 shadow-xl hover:shadow-2xl transition-transform duration-300 hover:-translate-y-1"
+                  className="bg-white dark:bg-zinc-800 flex flex-col md:flex-row rounded-xl border border-gray-200 dark:border-zinc-700 p-3 md:p-4 shadow-lg hover:shadow-xl transition-all duration-300"
                   role="listitem"
                   itemScope
                   itemType="https://schema.org/BlogPosting"
                 >
-                  <div className="flex flex-col items-start  justify-evenly">
-                  <Image
-                    src={article.imageUrl}
-                    alt={article.title}
-                    width={500}
-                    height={300}
-                    className="w-35 h-25 object-contain rounded-md"
-                    priority={false}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="flex justify-start items-center gap-3">
-                    <Image
-                      alt={article.title}
-                      src={article.UserImage}
-                      width={100}
-                      height={100}
-                      className="w-8 h-8 rounded-full"
-                    />
-                    <h1 className="text-sm fonts-date ">{article.UserName}</h1>
+                  <div className="flex flex-col items-start mb-3 md:mb-0 md:mr-4">
+                    <div className="w-full md:w-40 h-32 relative">
+                      <Image
+                        src={article.imageUrl}
+                        alt={article.title}
+                        fill
+                        className="object-cover rounded-md"
+                        priority={false}
+                        loading="lazy"
+                        decoding="async"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
+                    <div className="flex justify-start items-center gap-2 mt-2">
+                      <div className="w-6 h-6 relative">
+                        <Image
+                          alt={article.title}
+                          src={article.UserImage}
+                          fill
+                          className="rounded-full"
+                        />
+                      </div>
+                      <span className="text-xs fonts-date dark:text-gray-300">
+                        {article.UserName}
+                      </span>
                     </div>
                   </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <h3
-                      className="text-xl dark:text-white font-semibold text-gray-800 mb-2"
-                      itemProp="headline"
-                    >
-                      {article.title}
-                    </h3>
-                    <p
-                      className="text-gray-600 dark:text-gray-200 mb-3 flex-1 text-sm leading-relaxed"
-                      itemProp="description"
-                    >
-                      {article.description.split(" ").slice(0, 20).join(" ")}
-                      {article.description.split(" ").length > 20 && "..."}
-                    </p>
-                    <div className="text-sm dark:text-white text-blue-500 mb-4 font-medium">
-                      Category: <span itemProp="genre">{article.category}</span>
+                  
+                  <div className="flex-1 flex flex-col">
+                    <div className="p-2 md:p-3 flex-1">
+                      <h3
+                        className="text-lg md:text-xl dark:text-white font-semibold text-gray-800 mb-1 md:mb-2"
+                        itemProp="headline"
+                      >
+                        {article.title}
+                      </h3>
+                      <p
+                        className="text-gray-600 dark:text-gray-300 mb-2 md:mb-3 text-xs md:text-sm leading-relaxed line-clamp-2"
+                        itemProp="description"
+                      >
+                        {article.description}
+                      </p>
+                      <div className="text-xs md:text-sm dark:text-gray-400 text-blue-500 mb-2 font-medium">
+                        Category: <span itemProp="genre">{article.category}</span>
+                      </div>
+                      <Link
+                        href={`/article/${article.slug || article._id}`}
+                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline underline-offset-4 text-sm font-medium transition-colors duration-200 inline-block mt-1"
+                        aria-label={`Read more about ${article.title}`}
+                        itemProp="url"
+                      >
+                        Show More →
+                      </Link>
                     </div>
-                    <Link
-                      href={`/article/${article.slug || article._id}`}
-                      className="text-blue-600 dark:text-white hover:text-blue-800 hover:underline underline-offset-8 font-medium transition-colors duration-200"
-                      aria-label={`Read more about ${article.title}`}
-                      itemProp="url"
-                    >
-                      Show More →
-                    </Link>
-                  </div>
 
-                  <div className="flex items-end mr-3 mb-4 gap-2">
-                    <AlertDialog>
-                      <AlertDialogTrigger className="bg-red-400 hover:bg-red-500 py-3 px-4 rounded-md cursor-pointer transition-all duration-300">
-                        <MdDeleteForever />
-                      </AlertDialogTrigger>
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle>
-                            Are you absolutely sure?
-                          </AlertDialogTitle>
-                          <AlertDialogDescription>
-                            This action cannot be undone. This will permanently
-                            delete your article.
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <AlertDialogCancel>Cancel</AlertDialogCancel>
-                          <AlertDialogAction
-                            className="bg-red-400 hover:bg-red-600 transition-all duration-300"
-                            onClick={() =>
-                              deletePost(article._id, article.imagePublicId)
-                            }
+                    <div className="flex justify-end items-center gap-2 mt-2 p-2">
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button
+                            variant="destructive"
+                            size="sm"
+                            className="h-8 px-2 md:px-3"
+                            aria-label="Delete article"
                           >
-                            <MdDeleteForever /> Delete
-                          </AlertDialogAction>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
+                            <MdDeleteForever className="text-lg" />
+                            <span className="sr-only md:not-sr-only md:ml-1">
+                              Delete
+                            </span>
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent className="dark:bg-zinc-800">
+                          <AlertDialogHeader>
+                            <AlertDialogTitle className="dark:text-white">
+                              Are you absolutely sure?
+                            </AlertDialogTitle>
+                            <AlertDialogDescription className="dark:text-gray-300">
+                              This action cannot be undone. This will permanently
+                              delete your article.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel className="dark:bg-zinc-700 dark:text-white dark:hover:bg-zinc-600">
+                              Cancel
+                            </AlertDialogCancel>
+                            <AlertDialogAction
+                              className="bg-red-600 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-800 transition-all duration-300"
+                              onClick={() =>
+                                deletePost(article._id, article.imagePublicId)
+                              }
+                            >
+                              <MdDeleteForever className="mr-1" />
+                              Delete
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
 
-                    <Link href={`/dashboard/edit_Blog/${article._id}`}>
-                      <Button className="bg-blue-400 hover:bg-blue-500 transition-all duration-300">
-                        <CiEdit />
-                      </Button>
-                    </Link>
+                      <Link href={`/dashboard/edit_Blog/${article._id}`}>
+                        <Button
+                          size="sm"
+                          className="h-8 px-2 md:px-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800"
+                        >
+                          <CiEdit className="text-lg" />
+                          <span className="sr-only md:not-sr-only md:ml-1">
+                            Edit
+                          </span>
+                        </Button>
+                      </Link>
 
-                    <Toggle
-                      pressed={article.live}
-                      onClick={() => toggle(article._id, article.live)}
-                      className="text-white bg-gray-700 hover:bg-gray-900 p-2 rounded-md transition-all"
-                      aria-label="Toggle live status"
-                    >
-                      {article.live ? <FaEye /> : <FaEyeSlash />}
-                    </Toggle>
+                      <Toggle
+                        pressed={article.live}
+                        onPressedChange={() => toggle(article._id, article.live)}
+                        size="sm"
+                        className="h-8 px-2 md:px-3 bg-gray-700 hover:bg-gray-800 dark:bg-zinc-700 dark:hover:bg-zinc-600 data-[state=on]:bg-green-600 data-[state=on]:hover:bg-green-700"
+                        aria-label={article.live ? "Article is live" : "Article is hidden"}
+                      >
+                        {article.live ? (
+                          <FaEye className="text-white" />
+                        ) : (
+                          <FaEyeSlash className="text-white" />
+                        )}
+                        <span className="sr-only md:not-sr-only md:ml-1">
+                          {article.live ? "Live" : "Hidden"}
+                        </span>
+                      </Toggle>
+                    </div>
                   </div>
                 </article>
               ))
             ) : (
               <div className="col-span-full text-center py-10" role="alert">
-                <p className="text-gray-500">
+                <p className="text-gray-500 dark:text-gray-400">
                   No articles found matching your criteria.
                 </p>
               </div>
@@ -374,10 +397,10 @@ export default function BlogPage() {
         </section>
 
         {!allArticlesLoaded && filteredArticles.length > visibleArticles && (
-          <div className="text-center mt-8">
+          <div className="text-center mt-6">
             <button
               onClick={loadMoreArticles}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               aria-label="Load more articles"
             >
               Load More
@@ -386,7 +409,7 @@ export default function BlogPage() {
         )}
 
         {allArticlesLoaded && (
-          <div className="text-center mt-8 text-gray-500">
+          <div className="text-center mt-6 text-gray-500 dark:text-gray-400">
             You have reached the end of the list.
           </div>
         )}
